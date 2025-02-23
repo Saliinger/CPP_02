@@ -11,11 +11,10 @@ class Fixed {
 	// orthodox cannonical
     Fixed();
     Fixed(const Fixed &to_copy);
-	Fixed &operator=(const Fixed to_copy);
+	Fixed &operator=(const Fixed &to_copy);
     ~Fixed();
 
     // ex
-	Fixed(Fixed &to_copy);
 	Fixed(const int number);
 	Fixed(const float number);
     friend std::ostream &operator<<(std::ostream& out, const Fixed& fixed);

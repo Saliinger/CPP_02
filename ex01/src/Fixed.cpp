@@ -20,7 +20,7 @@ Fixed::Fixed(const Fixed &to_copy) {
 }
 
 // overload operator =
-Fixed &Fixed::operator=(const Fixed to_copy) {
+Fixed &Fixed::operator=(const Fixed &to_copy) {
   std::cout << "Copy assignment operator called" << std::endl;
   if (this != &to_copy)
     _fixedPoint = to_copy._fixedPoint;
@@ -29,19 +29,15 @@ Fixed &Fixed::operator=(const Fixed to_copy) {
 
 // other constructor
 
-// copy construcotr
-Fixed::Fixed(Fixed &to_copy) {
-  std::cout << "Copy constructor called" << std::endl;
-  this->_fixedPoint = to_copy._fixedPoint;
-}
-
 // int constructor
 Fixed::Fixed(const int number) {
-	this->_fixedPoint = number * 2^(this->_fractionalBits - 1);
+    std::cout << "Int constructor called" << std::endl;
+    this->_fixedPoint = number << this->_fractionalBits;
 }
 
 // float constructor
 Fixed::Fixed(const float number) {
+    std::cout << "Float constructor called" << std::endl;
 	this->_fixedPoint = static_cast<int>(number * (1 << this->_fractionalBits));
 }
 
@@ -52,7 +48,6 @@ std::ostream& operator<<(std::ostream& out, const Fixed& fixed) {
     out << fixed.toFloat();
     return out;
 }
-
 
 // functions
 
