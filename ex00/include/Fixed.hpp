@@ -9,7 +9,7 @@ class Fixed {
     static const int _fractionalBits = 8;
   public:
     Fixed();
-    Fixed(Fixed &to_copy);
+    Fixed(const Fixed &to_copy);
     ~Fixed();
 
     Fixed &operator=(Fixed &to_copy);
