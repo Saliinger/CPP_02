@@ -23,15 +23,15 @@ Fixed::Fixed(const Fixed &to_copy) {
 }
 
 // overload operator =
-Fixed &Fixed::operator=(Fixed &to_copy) {
+Fixed &Fixed::operator=(const Fixed &to_copy) {
   std::cout << "Copy assignment operator called" << std::endl;
   if (this != &to_copy)
     _fixedPoint = to_copy._fixedPoint;
   return *this;
 }
 
-
 // functions
+
 int Fixed::getRawBits() const {
   std::cout << "getRawBits member function called" << std::endl;
   return this->_fixedPoint;

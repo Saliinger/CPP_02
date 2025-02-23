@@ -8,10 +8,14 @@ class Fixed {
     int _fixedPoint;
     static const int _fractionalBits = 8;
   public:
+  // orthodox canonical form
+
     Fixed();
     Fixed(const Fixed &to_copy);
     ~Fixed();
-    Fixed &operator=(Fixed &to_copy);
+    Fixed &operator=(const Fixed &to_copy);
+
+    // functions
     int getRawBits() const;
     void setRawBits(int const raw);
 
