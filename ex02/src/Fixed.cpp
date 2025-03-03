@@ -1,28 +1,98 @@
 #include "../include/Fixed.hpp"
 
+// orthodox cannonical
+
+// constructor
 Fixed::Fixed() {
   std::cout << "Default constructor called" << std::endl;
   this->_fixedPoint = 0;
-  return ;
 }
 
+// destructor
 Fixed::~Fixed() {
   std::cout << "Destructor called" << std::endl;
-  return ;
 }
 
-Fixed::Fixed(Fixed &to_copy) {
+// copy constructor
+Fixed::Fixed(const Fixed &to_copy) {
   std::cout << "Copy constructor called" << std::endl;
   this->_fixedPoint = to_copy._fixedPoint;
-  return ;
 }
 
-Fixed &Fixed::operator=(Fixed &to_copy) {
+// overload operator =
+Fixed &Fixed::operator=(const Fixed &to_copy) {
   std::cout << "Copy assignment operator called" << std::endl;
   if (this != &to_copy)
     _fixedPoint = to_copy._fixedPoint;
   return *this;
 }
+
+// other constructor
+
+// int constructor
+Fixed::Fixed(const int number) {
+    std::cout << "Int constructor called" << std::endl;
+    this->_fixedPoint = number << this->_fractionalBits;
+}
+
+// float constructor
+Fixed::Fixed(const float number) {
+    std::cout << "Float constructor called" << std::endl;
+	this->_fixedPoint = static_cast<int>(number * (1 << this->_fractionalBits));
+}
+
+// other operator
+
+// overload operator <<
+std::ostream& operator<<(std::ostream& out, const Fixed& fixed) {
+    out << fixed.toFloat();
+    return out;
+}
+
+// arithmetic operator
+Fixed &operator+=(const Fixed &to_add) {
+	this->_fixedPoint += to_add._fixedPoint;
+}
+
+Fixed &operator-=(const Fixed &to_sub) {
+	this->_fixedPoint -= to_add._fixedPoint;
+}
+
+Fixed &operator*=(const Fixed &to_mul) {
+	this->_fixedPoint *= to_add._fixedPoint;
+}
+
+Fixed &operator/=(const Fixed &to_div) {
+	this->_fixedPoint /= to_add._fixedPoint;
+}
+
+
+// comparaison operator
+bool operator==(const Fixed &a, const Fixed &b) {
+	return a._fixedPoint == b._fixedPoint;
+}
+
+bool operator!=(const Fixed &a, const Fixed &b) {
+	return a._fixedPoint != b._fixedPoint;
+}
+
+bool operator<(const Fixed &a, const Fixed &b) {
+	return a._fixedPoint < b._fixedPoint;
+}
+
+bool operator>(const Fixed &a, const Fixed &b) {
+	return a._fixedPoint > b._fixedPoint;
+}
+
+bool operator<=(const Fixed &a, const Fixed &b) {
+	return a._fixedPoint <= b._fixedPoint;
+}
+
+bool operator>=(const Fixed &a, const Fixed &b) {
+	return a._fixedPoint >= b._fixedPoint;
+}
+
+// functions
 
 int Fixed::getRawBits() const {
   std::cout << "getRawBits member function called" << std::endl;
@@ -32,3 +102,12 @@ int Fixed::getRawBits() const {
 void Fixed::setRawBits(int raw_bits) {
   this->_fixedPoint = raw_bits;
 }
+
+float Fixed::toFloat() const {
+	return static_cast<float>(this->_fixedPoint) / (1 << this->_fractionalBits);
+}
+
+int Fixed::toInt() const {
+	return this->_fixedPoint / (1 << this->_fractionalBits);
+}
+
