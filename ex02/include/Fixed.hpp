@@ -34,10 +34,10 @@ class Fixed {
 	static const Fixed &max(const Fixed &a, const Fixed &b);
 
 	// arithmetic operator
-	Fixed &operator+(const Fixed &to_add);
-	Fixed &operator-(const Fixed &to_sub);
-	Fixed &operator*(const Fixed &to_mul);
-	Fixed &operator/(const Fixed &to_div);
+	float operator+(const Fixed &to_add);
+	float operator-(const Fixed &to_sub);
+	float operator*(const Fixed &to_mul);
+	float operator/(const Fixed &to_div);
 
 	// comparaison operator
 	bool operator==(const Fixed &to_compare) const;
