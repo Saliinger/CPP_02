@@ -50,46 +50,73 @@ std::ostream& operator<<(std::ostream& out, const Fixed& fixed) {
 }
 
 // arithmetic operator
-Fixed &operator+=(const Fixed &to_add) {
+Fixed &Fixed::operator+(const Fixed &to_add) {
 	this->_fixedPoint += to_add._fixedPoint;
+  return *this;
 }
 
-Fixed &operator-=(const Fixed &to_sub) {
-	this->_fixedPoint -= to_add._fixedPoint;
+Fixed &Fixed::operator-(const Fixed &to_sub) {
+	this->_fixedPoint -= to_sub._fixedPoint;
+  return *this;
 }
 
-Fixed &operator*=(const Fixed &to_mul) {
-	this->_fixedPoint *= to_add._fixedPoint;
+Fixed &Fixed::operator*(const Fixed &to_mul) {
+	this->_fixedPoint *= to_mul._fixedPoint;
+  return *this;
 }
 
-Fixed &operator/=(const Fixed &to_div) {
-	this->_fixedPoint /= to_add._fixedPoint;
+Fixed &Fixed::operator/(const Fixed &to_div) {
+	this->_fixedPoint /= to_div._fixedPoint;
+  return *this;
 }
 
 
 // comparaison operator
-bool operator==(const Fixed &a, const Fixed &b) {
-	return a._fixedPoint == b._fixedPoint;
+bool Fixed::operator==(const Fixed &to_compare) const {
+  return this->_fixedPoint == to_compare._fixedPoint;
 }
 
-bool operator!=(const Fixed &a, const Fixed &b) {
-	return a._fixedPoint != b._fixedPoint;
+bool Fixed::operator!=(const Fixed &to_compare) const {
+  return this->_fixedPoint != to_compare._fixedPoint;
 }
 
-bool operator<(const Fixed &a, const Fixed &b) {
-	return a._fixedPoint < b._fixedPoint;
+bool Fixed::operator>=(const Fixed &to_compare) const {
+  return this->_fixedPoint >= to_compare._fixedPoint;
 }
 
-bool operator>(const Fixed &a, const Fixed &b) {
-	return a._fixedPoint > b._fixedPoint;
+bool Fixed::operator<=(const Fixed &to_compare) const {
+  return this->_fixedPoint <= to_compare._fixedPoint;
 }
 
-bool operator<=(const Fixed &a, const Fixed &b) {
-	return a._fixedPoint <= b._fixedPoint;
+bool Fixed::operator<(const Fixed &to_compare) const {
+  return this->_fixedPoint < to_compare._fixedPoint;
 }
 
-bool operator>=(const Fixed &a, const Fixed &b) {
-	return a._fixedPoint >= b._fixedPoint;
+bool Fixed::operator>(const Fixed &to_compare) const {
+  return this->_fixedPoint > to_compare._fixedPoint;
+}
+
+// increment & decrement operator
+Fixed &Fixed::operator++() {
+  _fixedPoint++;
+  return *this;
+}
+
+Fixed Fixed::operator++(int) {
+  Fixed temp = *this;
+  ++*this;
+  return temp;
+}
+
+Fixed &Fixed::operator--()  {
+  _fixedPoint--;
+  return *this;
+}
+
+Fixed Fixed::operator--(int) {
+  Fixed temp = *this;
+  --*this;
+  return temp;
 }
 
 // functions

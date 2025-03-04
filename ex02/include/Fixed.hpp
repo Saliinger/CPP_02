@@ -8,6 +8,7 @@ class Fixed {
     int _fixedPoint;
     static const int _fractionalBits = 8;
   public:
+
 	// orthodox cannonical
     Fixed();
     Fixed(const Fixed &to_copy);
@@ -33,20 +34,25 @@ class Fixed {
 	static Fixed &max(const Fixed &a, const Fixed &b);
 
 	// arithmetic operator
-	Fixed &operator+=(const Fixed &to_add);
-	Fixed &operator-=(const Fixed &to_sub);
-	Fixed &operator*=(const Fixed &to_mul);
-	Fixed &operator/=(const Fixed &to_div);
+	Fixed &operator+(const Fixed &to_add);
+	Fixed &operator-(const Fixed &to_sub);
+	Fixed &operator*(const Fixed &to_mul);
+	Fixed &operator/(const Fixed &to_div);
 
 	// comparaison operator
-	bool operator==(const Fixed &a, const Fixed &b);
-	bool operator!=(const Fixed &a, const Fixed &b);
-	bool operator<(const Fixed &a, const Fixed &b);
-	bool operator>(const Fixed &a, const Fixed &b);
-	bool operator<=(const Fixed &a, const Fixed &b);
-	bool operator>=(const Fixed &a, const Fixed &b);
+	bool operator==(const Fixed &to_compare) const;
+	bool operator!=(const Fixed &to_compare) const;
+	bool operator>=(const Fixed &to_compare) const;
+	bool operator<=(const Fixed &to_compare) const;
+	bool operator<(const Fixed &to_compare) const;
+	bool operator>(const Fixed &to_compare) const;
 
 	// increment & decrement operator
+	Fixed &operator++();
+	Fixed operator++(int);
+	Fixed &operator--();
+	Fixed operator--(int);
+
 
 };
 
