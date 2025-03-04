@@ -4,24 +4,20 @@
 
 // constructor
 Fixed::Fixed() {
-  std::cout << "Default constructor called" << std::endl;
   this->_fixedPoint = 0;
 }
 
 // destructor
 Fixed::~Fixed() {
-  std::cout << "Destructor called" << std::endl;
 }
 
 // copy constructor
 Fixed::Fixed(const Fixed &to_copy) {
-  std::cout << "Copy constructor called" << std::endl;
   this->_fixedPoint = to_copy._fixedPoint;
 }
 
 // overload operator =
 Fixed &Fixed::operator=(const Fixed &to_copy) {
-  std::cout << "Copy assignment operator called" << std::endl;
   if (this != &to_copy)
     _fixedPoint = to_copy._fixedPoint;
   return *this;
@@ -31,13 +27,11 @@ Fixed &Fixed::operator=(const Fixed &to_copy) {
 
 // int constructor
 Fixed::Fixed(const int number) {
-    std::cout << "Int constructor called" << std::endl;
     this->_fixedPoint = number << this->_fractionalBits;
 }
 
 // float constructor
 Fixed::Fixed(const float number) {
-    std::cout << "Float constructor called" << std::endl;
 	this->_fixedPoint = static_cast<int>(number * (1 << this->_fractionalBits));
 }
 
@@ -122,7 +116,6 @@ Fixed Fixed::operator--(int) {
 // functions
 
 int Fixed::getRawBits() const {
-  std::cout << "getRawBits member function called" << std::endl;
   return this->_fixedPoint;
 }
 
@@ -137,4 +130,29 @@ float Fixed::toFloat() const {
 int Fixed::toInt() const {
 	return this->_fixedPoint / (1 << this->_fractionalBits);
 }
+
+Fixed &Fixed::min(Fixed &a, Fixed &b) {
+  if (a < b)
+    return a;
+  return b;
+}
+
+const Fixed &Fixed::min(const Fixed &a, const Fixed &b) {
+  if (a < b)
+    return a;
+  return b;
+}
+
+Fixed &Fixed::max(Fixed &a, Fixed &b) {
+  if (a > b)
+    return a;
+  return b;
+}
+
+const Fixed &Fixed::max(const Fixed &a, const Fixed &b) {
+  if (a > b)
+    return a;
+  return b;
+}
+
 
