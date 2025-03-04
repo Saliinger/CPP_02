@@ -32,7 +32,7 @@ Fixed::Fixed(const int number) {
 
 // float constructor
 Fixed::Fixed(const float number) {
-	this->_fixedPoint = static_cast<int>(number * (1 << this->_fractionalBits));
+	this->_fixedPoint = roundf(number * (1 << this->_fractionalBits));
 }
 
 // other operator
@@ -94,7 +94,7 @@ Fixed &Fixed::operator++() {
 
 Fixed Fixed::operator++(int) {
   Fixed temp = *this;
-  ++*this;
+  ++this->_fixedPoint;
   return temp;
 }
 
@@ -105,7 +105,7 @@ Fixed &Fixed::operator--() {
 
 Fixed Fixed::operator--(int) {
   Fixed temp = *this;
-  --*this;
+  --this->_fixedPoint;
   return temp;
 }
 
@@ -128,25 +128,25 @@ int Fixed::toInt() const {
 }
 
 Fixed &Fixed::min(Fixed &a, Fixed &b) {
-  if (a.toFloat() < b.toFloat())
+  if (a.toFloat() <= b.toFloat())
     return a;
   return b;
 }
 
 const Fixed &Fixed::min(const Fixed &a, const Fixed &b) {
-  if (a.toFloat() < b.toFloat())
+  if (a.toFloat() <= b.toFloat())
     return a;
   return b;
 }
 
 Fixed &Fixed::max(Fixed &a, Fixed &b) {
-  if (a.toFloat() > b.toFloat())
+  if (a.toFloat() >= b.toFloat())
     return a;
   return b;
 }
 
 const Fixed &Fixed::max(const Fixed &a, const Fixed &b) {
-  if (a.toFloat() > b.toFloat())
+  if (a.toFloat() >= b.toFloat())
     return a;
   return b;
 }
