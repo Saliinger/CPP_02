@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Fixed.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: anoukan <anoukan@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/05 16:09:55 by anoukan           #+#    #+#             */
+/*   Updated: 2025/03/05 16:11:13 by anoukan          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/Fixed.hpp"
 
 // orthodox canonical form
@@ -38,5 +50,6 @@ int Fixed::getRawBits() const {
 }
 
 void Fixed::setRawBits(int const raw) {
+  std::cout << "setRawBits member function called" << std::endl;
   this->_fixedPoint = raw;
 }

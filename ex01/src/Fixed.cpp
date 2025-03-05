@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Fixed.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: anoukan <anoukan@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/05 16:11:29 by anoukan           #+#    #+#             */
+/*   Updated: 2025/03/05 16:13:27 by anoukan          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/Fixed.hpp"
 
 // orthodox cannonical
@@ -38,7 +50,7 @@ Fixed::Fixed(const int number) {
 // float constructor
 Fixed::Fixed(const float number) {
     std::cout << "Float constructor called" << std::endl;
-	this->_fixedPoint = static_cast<int>(number * (1 << this->_fractionalBits));
+	  this->_fixedPoint = roundf(number * (1 << this->_fractionalBits));
 }
 
 // other operator
@@ -57,6 +69,7 @@ int Fixed::getRawBits() const {
 }
 
 void Fixed::setRawBits(int raw_bits) {
+  std::cout << "setRawBits member function called" << std::endl;
   this->_fixedPoint = raw_bits;
 }
 

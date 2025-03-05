@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Fixed.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: anoukan <anoukan@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/05 16:13:00 by anoukan           #+#    #+#             */
+/*   Updated: 2025/03/05 16:13:20 by anoukan          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/Fixed.hpp"
 
 // orthodox cannonical
@@ -112,10 +124,12 @@ Fixed Fixed::operator--(int) {
 // functions
 
 int Fixed::getRawBits() const {
+  std::cout << "getRawBits member function called" << std::endl;
   return this->_fixedPoint;
 }
 
 void Fixed::setRawBits(int raw_bits) {
+  std::cout << "setRawBits member function called" << std::endl;
   this->_fixedPoint = raw_bits;
 }
 
