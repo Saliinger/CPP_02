@@ -6,11 +6,11 @@
 #    By: anoukan <anoukan@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/05 16:11:20 by anoukan           #+#    #+#              #
-#    Updated: 2025/03/05 16:11:21 by anoukan          ###   ########.fr        #
+#    Updated: 2025/03/05 16:22:53 by anoukan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	My_First_Class_in_Orthodox_Canonical_Form
+NAME		=	ex00
 CXX			= c++
 CXXFLAGS	= -Werror -Wall -Wextra -std=c++98
 
